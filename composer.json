@@ -1,0 +1,19 @@
+{
+	"name": "ixolit/moreify-client-http-httplug",
+	"license": "MIT",
+	"require": {
+		"php-http/curl-client": "^1.4",
+		"guzzlehttp/psr7": "^1.3",
+		"php-http/message": "^1.3",
+		"ixolit/moreify-client": "^1.0.0"
+	},
+	"provide": {
+		"ixolit/moreify-client-http": "1.0.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Ixolit\\Moreify\\HTTP\\HTTPlug\\": "./src"
+		}
+	},
+	"minimum-stability": "dev"
+}
