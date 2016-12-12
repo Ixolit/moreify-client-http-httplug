@@ -15,6 +15,13 @@ use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 
 class HTTPlugHTTPClientAdapter implements HTTPClientAdapter {
+    private $client;
+
+    public function __construct() {
+        $this->client = new Client(new GuzzleMessageFactory(), new GuzzleStreamFactory());
+    }
+
+
     /**
      * @return RequestInterface
      */
@@ -44,10 +51,8 @@ class HTTPlugHTTPClientAdapter implements HTTPClientAdapter {
      * @return ResponseInterface
      */
     public function send(RequestInterface $request) {
-        $client = new Client(new GuzzleMessageFactory(), new GuzzleStreamFactory());
-
         try {
-            return $client->sendRequest($request);
+            return $this->client->sendRequest($request);
         } catch (RequestException $e) {
             return $e->getRequest();
         }
